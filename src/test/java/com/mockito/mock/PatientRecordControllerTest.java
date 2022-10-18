@@ -1,9 +1,9 @@
 package com.mockito.mock;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mockito.mock.controller.PatientRecordController;
 import com.mockito.mock.entity.PatientRecord;
 import com.mockito.mock.repository.PatientRecordRepository;
-import io.restassured.mapper.ObjectMapper;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
