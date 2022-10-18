@@ -4,7 +4,6 @@ import com.mockito.mock.controller.PatientRecordController;
 import com.mockito.mock.entity.PatientRecord;
 import com.mockito.mock.repository.PatientRecordRepository;
 import io.restassured.mapper.ObjectMapper;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -48,8 +50,8 @@ public class PatientRecordControllerTest {
                         .get("/patient")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) jsonPath("$", Matchers.hasSize(3)))
-                .andExpect((ResultMatcher) jsonPath("$[2].name", Matchers.is("Jane Doe")));
+                .andExpect((ResultMatcher) jsonPath("$", hasSize(3)))
+                .andExpect((ResultMatcher) jsonPath("$[2].name", is("Jane Doe")));
     }
 
     @Test
@@ -60,8 +62,8 @@ public class PatientRecordControllerTest {
                         .get("/patient/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) jsonPath("$", Matchers.notNullValue()))
-                .andExpect((ResultMatcher) jsonPath("$.name", Matchers.is("Rayven Yor")));
+                .andExpect((ResultMatcher) jsonPath("$", notNullValue()))
+                .andExpect((ResultMatcher) jsonPath("$.name", is("Rayven Yor")));
     }
 
 
