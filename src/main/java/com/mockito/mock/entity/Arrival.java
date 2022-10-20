@@ -1,8 +1,11 @@
 package com.mockito.mock.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "arrival")
 public class Arrival {
 

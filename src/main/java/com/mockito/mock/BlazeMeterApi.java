@@ -25,7 +25,9 @@ public class BlazeMeterApi {
 				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
 				.paths(PathSelectors.any()).build().pathMapping("/")
 				.apiInfo(apiInfo()).useDefaultResponseMessages(false);
+
 	}
+
 
 	@Bean
 	ApiInfo apiInfo() {

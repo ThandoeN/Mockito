@@ -48,7 +48,7 @@ public class ArrivalControllerTest  {
         given(arrivalController.getAllArrivals()).willReturn(allArrivals);
 
         mvc.perform(get(VERSION + ARRIVAL + "all")
-                        .with(user("postgres").password("211691730"))
+                        .with(user("blazedemo").password("211691730"))
                         .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -64,7 +64,7 @@ public class ArrivalControllerTest  {
         given(arrivalController.getArrivalById(arrival.getId())).willReturn(arrival);
 
         mvc.perform(get(VERSION + ARRIVAL + arrival.getId())
-                        .with(user("postgres").password("211691730"))
+                        .with(user("blazedemo").password("211691730"))
                         .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("city", is(arrival.getCity())));
